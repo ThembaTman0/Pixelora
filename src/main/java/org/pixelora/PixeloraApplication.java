@@ -1,13 +1,13 @@
-package org.pixelvault.PixelVault;
+package org.pixelora;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PixelVaultApplication {
+public class PixeloraApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PixelVaultApplication.class, args);
+		SpringApplication.run(PixeloraApplication.class, args);
 	}
 
 }

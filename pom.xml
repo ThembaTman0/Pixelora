@@ -8,10 +8,10 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.pixelvault</groupId>
-	<artifactId>PixelVault</artifactId>
+	<groupId>org.pixelora</groupId>
+	<artifactId>Pixelora</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PixelVault</name>
+	<name>Pixelora</name>
 	<description>Photo library web application</description>
 	<url/>
 	<licenses>
