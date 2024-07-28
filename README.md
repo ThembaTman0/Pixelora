@@ -102,7 +102,7 @@ The application is divided into two main parts:
 
 ## Usage
 
-1. Open your browser and navigate to `http://localhost:3000`
+1. Open your browser and navigate to `http://localhost:8080`
 2. Register a new user or log in with existing credentials
 3. Upload, delete, and download images
 4. Browse and search for images
