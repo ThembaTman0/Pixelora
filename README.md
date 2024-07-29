@@ -1,6 +1,6 @@
-# PixelVault
+# Pixelora
 
-PixelVault is a full-stack web application that serves as a photo library, allowing users to insert, delete, and download images, similar to Unsplash. The backend is built using Java, JSP, Hibernate, Spring, Spring Boot, and RESTful APIs, while the frontend is developed with JavaScript and React.
+Pixelora is a full-stack web application that serves as a photo library, allowing users to insert, delete, and download images. The backend is built using Java, JSP, Hibernate, Spring, Spring Boot, and RESTful APIs, while the frontend is developed with JavaScript and React.
 
 ## Table of Contents
 
@@ -57,8 +57,8 @@ The application is divided into two main parts:
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/yourusername/pixelvault.git
-    cd pixelvault
+    git clone https://github.com/yourusername/Pixelora.git
+    cd Pixelora
     ```
 
 2. **Set up the backend**
@@ -67,7 +67,7 @@ The application is divided into two main parts:
     - Configure the database connection in `src/main/resources/application.properties`
 
     ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/pixelvault
+    spring.datasource.url=jdbc:mysql://localhost:3306/Pixelora
     spring.datasource.username=yourusername
     spring.datasource.password=yourpassword
     spring.jpa.hibernate.ddl-auto=update
@@ -102,7 +102,7 @@ The application is divided into two main parts:
 
 ## Usage
 
-1. Open your browser and navigate to `http://localhost:3000`
+1. Open your browser and navigate to `http://localhost:8080`
 2. Register a new user or log in with existing credentials
 3. Upload, delete, and download images
 4. Browse and search for images
