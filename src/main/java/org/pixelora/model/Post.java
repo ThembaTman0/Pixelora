@@ -26,5 +26,4 @@ public class Post {
 
     private LocalDateTime createdAt;
 
-
 }
