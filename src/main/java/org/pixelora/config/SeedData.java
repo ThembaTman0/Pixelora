@@ -16,7 +16,7 @@ public class SeedData implements CommandLineRunner {
     private PostService postService;
     @Override
     public void run(String... args) throws Exception {
-
+        //Post Dummy Data into H2 DB
         List<Post> post = postService.getAll();
 
         if (post.size() == 0){
