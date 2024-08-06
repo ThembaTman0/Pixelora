@@ -34,7 +34,8 @@ public class SeedData implements CommandLineRunner {
         account2.setFirstname("user02");
         account2.setFirstname("user02");
 
-
+        accountService.save(account1);
+        accountService.save(account2);
 
         //Post Dummy Data into H2 DB
         List<Post> post = postService.getAll();
