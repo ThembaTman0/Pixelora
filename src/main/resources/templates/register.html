@@ -9,7 +9,7 @@
     <div class="bg-box">
         <img src="images/nav-bg.png" alt="">
     </div>
-    <header th:replace="/fragments/header :: header">
+    <header th:replace="/fragments/header :: header"/>
 </div>
 
 <!-- book section -->
@@ -36,19 +36,19 @@
                         <div>
                             <input id="firstname" type="text" th:field="*{firstname}" class="form-control" placeholder="First name" />
                         </div>
+                    </form>
                 </div>
                 <div class="btn_box">
                     <button type="submit">
                         Register
                     </button>
                 </div>
-                </form>
             </div>
         </div>
     </div>
 </section>
 <!-- end book section -->
-<footer th:replace="/fragments/footer :: footer">
+<footer th:replace="/fragments/footer :: footer"/>
 </body>
 
 </html>
