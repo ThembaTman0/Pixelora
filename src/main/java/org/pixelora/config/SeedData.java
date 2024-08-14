@@ -22,20 +22,20 @@ public class SeedData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Account account1=new Account();
-        Account account2=new Account();
+        Account account01=new Account();
+        Account account02=new Account();
 
-        account1.setEmail("account01@mail.com");
-        account1.setPassword("password");
-        account1.setFirstname("user01");
+        account01.setEmail("account01@mail.com");
+        account01.setPassword("password");
+        account01.setFirstname("user01");
 
-        account2.setEmail("account02@mail.com");
-        account2.setPassword("password");
-        account2.setFirstname("user02");
-        account2.setFirstname("user02");
+        account02.setEmail("account02@mail.com");
+        account02.setPassword("password");
+        account02.setFirstname("user02");
+        account02.setFirstname("user02");
 
-        accountService.save(account1);
-        accountService.save(account2);
+        accountService.save(account01);
+        accountService.save(account02);
 
         //Post Dummy Data into H2 DB
         List<Post> post = postService.getAll();
@@ -43,14 +43,14 @@ public class SeedData implements CommandLineRunner {
         if (post.size() == 0){
             Post post01 = new Post();
             post01.setTitle("Post 01");
-            post01.setAccount(account1);
+            post01.setAccount(account01);
             post01.setBody("Post 01 body.............");
 
             postService.save(post01);
 
             Post post02 = new Post();
             post02.setTitle("Post 02");
-            post02.setAccount(account2);
+            post02.setAccount(account02);
             post02.setBody("Post 02 body.............");
 
             postService.save(post02);
