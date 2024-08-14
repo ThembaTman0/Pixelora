@@ -22,11 +22,16 @@ public class AccountController {
         model.addAttribute("account", account);
         return "register";
     }
-
+    //When registering post the data into DB
     @PostMapping("/register")
     public String register_user(@ModelAttribute Account account){
         accountService.save(account);
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        return "login";
     }
 
 
