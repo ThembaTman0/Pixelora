@@ -38,6 +38,7 @@ public class SeedData implements CommandLineRunner {
         accountService.save(account02);
 
         //Post Dummy Data into H2 DB
+        //This might move out once there is an update
         List<Post> post = postService.getAll();
 
         if (post.size() == 0){
