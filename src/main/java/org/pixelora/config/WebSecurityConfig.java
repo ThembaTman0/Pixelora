@@ -1,45 +1,62 @@
 package org.pixelora.config;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
-@EnableWebSecurity
 public class WebSecurityConfig {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class); // Logger to log information and errors
+    private static final Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
 
-    private static final String[] WHITELIST = { // List of URL patterns that are accessible without authentication
+    private static final String[] WHITELIST = {
             "/",
             "/login",
             "/register",
-            "/db-console/**",  // H2 database console access
-            "/css/**",         // Static resources: CSS files
-            "/fonts/**",       // Static resources: Font files
-            "/images/**",      // Static resources: Image files
-            "/js/**",          // Static resources: JavaScript files
+            "/db-console/**",
+            "/css/**",
+            "/fonts/**",
+            "/images/**",
+            "/js/**",
     };
 
     @Bean
+    public static PasswordEncoder passwordEncoder(){
+        return  new BCryptPasswordEncoder();
+    }
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        logger.info("Applying security configuration...");  // Logs that the security configuration is being applied
+        logger.info("Applying security configuration...");
 
-        http.authorizeHttpRequests()
-                .requestMatchers(WHITELIST)
-                .permitAll()           // Permits access to the URLs defined in the whitelist without authentication
-                .anyRequest()
-                .authenticated()       // Requires authentication for any other request
-                //TODO: remove these after upgrading the DB from H2 in-file DB
+        http.authorizeHttpRequests((requests) -> requests
+                        .requestMatchers(WHITELIST).permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login?error")
+                        .permitAll()
+                ) // End of formLogin configuration
+                .logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/logout?success")
+                        .permitAll()
+                ) // End of logout configuration
+                .httpBasic(withDefaults()) // Adds basic authentication
+                .csrf((csrf) -> csrf.disable())  // Disable CSRF protection
+                .headers((headers) -> headers.frameOptions().disable());  // Disable frame options for H2 console
 
-                .and()
-                .csrf().disable()      // Disables CSRF protection (should be enabled in production for security)
-                .headers().frameOptions().disable();  // Disables frame options to allow the H2 console to be loaded in a frame
-
-        return http.build();  // Builds the SecurityFilterChain with the configured security settings
+        return http.build();
     }
 }
+
