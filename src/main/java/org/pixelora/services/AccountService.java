@@ -2,6 +2,7 @@ package org.pixelora.services;
 
 import org.pixelora.model.Account;
 import org.pixelora.repositories.AccountRepository;
+import org.pixelora.util.constants.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +27,7 @@ public class AccountService implements UserDetailsService {
 
     public Account save(Account account){
         account.setPassword(passwordEncoder.encode(account.getPassword()));
+        account.setRole(Roles.USER.getRole());
         return accoutRepository.save(account);
     }
 
@@ -38,7 +40,7 @@ public class AccountService implements UserDetailsService {
         Account account = optionalAccount.get();
 
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
-        grantedAuthority.add(new SimpleGrantedAuthority("Allow"));
+        grantedAuthority.add(new SimpleGrantedAuthority(account.getRole()));
 
         // Return a User object containing the account's email, password, and authorities
         // The User class implements UserDetails, which is required by Spring Security
