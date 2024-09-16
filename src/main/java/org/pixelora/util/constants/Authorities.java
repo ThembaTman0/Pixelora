@@ -11,7 +11,7 @@ public enum Authorities {
         this.authorityId=authorityId;
         this.authorityString=authorityString;
     }
-    public int getAuthorityId() {
+    public long getAuthorityId() {
         return authorityId;
     }
 

@@ -1,9 +1,11 @@
 package org.pixelora.config;
 
 import org.pixelora.model.Account;
+import org.pixelora.model.Authority;
 import org.pixelora.model.Post;
 import org.pixelora.services.AccountService;
 import org.pixelora.services.PostService;
+import org.pixelora.util.constants.Authorities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import java.util.List;
 @Component
 public class SeedData implements CommandLineRunner {
 
+
     @Autowired
     private PostService postService;
 
@@ -21,6 +24,11 @@ public class SeedData implements CommandLineRunner {
     private AccountService accountService;
     @Override
     public void run(String... args) throws Exception {
+
+        for(Authorities auth: Authorities.values()){
+            Authority authroty =new Authority();
+            authroty.setId(auth.getAuthorityId());
+        }
 
         Account account01=new Account();
         Account account02=new Account();
