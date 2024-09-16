@@ -6,7 +6,7 @@ import org.pixelora.model.Post;
 import org.pixelora.services.AccountService;
 import org.pixelora.services.AuthorityService;
 import org.pixelora.services.PostService;
-import org.pixelora.util.constants.Authorities;
+import org.pixelora.util.constants.Privileges;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -29,10 +29,11 @@ public class SeedData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        for(Authorities auth: Authorities.values()){
+        for(Privileges auth: Privileges.values()){
             Authority authority =new Authority();
-            authority.setId(auth.getAuthorityId());
-            authority.setName(auth.getAuthorityString());
+            authority.setId(auth.getId());
+            authority.setName(auth.getPrivilege());
+            authorityService.save(authority);
 
 
         }
