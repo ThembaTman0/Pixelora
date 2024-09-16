@@ -1,13 +1,13 @@
 package org.pixelora.util.constants;
 
 public enum Authorities {
-    RESET_ANY_USER_PASSWORD(1,"RESET_ANY_USER_PASSWORD"),
-    ACCESS_ADMIN_PANEL(2,"ACCESS_ADMIN_PANEL");
+    RESET_ANY_USER_PASSWORD(1l,"RESET_ANY_USER_PASSWORD"),
+    ACCESS_ADMIN_PANEL(2l,"ACCESS_ADMIN_PANEL");
 
-    private  int authorityId;
+    private  Long authorityId;
     private String authorityString;
 
-    private Authorities(int authorityId,String authorityString){
+    private Authorities(Long authorityId,String authorityString){
         this.authorityId=authorityId;
         this.authorityString=authorityString;
     }

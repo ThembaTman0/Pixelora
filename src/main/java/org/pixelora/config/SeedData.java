@@ -4,6 +4,7 @@ import org.pixelora.model.Account;
 import org.pixelora.model.Authority;
 import org.pixelora.model.Post;
 import org.pixelora.services.AccountService;
+import org.pixelora.services.AuthorityService;
 import org.pixelora.services.PostService;
 import org.pixelora.util.constants.Authorities;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,19 @@ public class SeedData implements CommandLineRunner {
     private PostService postService;
 
     @Autowired
+    private AuthorityService authorityService;
+
+    @Autowired
     private AccountService accountService;
     @Override
     public void run(String... args) throws Exception {
 
         for(Authorities auth: Authorities.values()){
-            Authority authroty =new Authority();
-            authroty.setId(auth.getAuthorityId());
+            Authority authority =new Authority();
+            authority.setId(auth.getAuthorityId());
+            authority.setName(auth.getAuthorityString());
+
+
         }
 
         Account account01=new Account();
